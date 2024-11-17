@@ -1,4 +1,4 @@
-import useRecipeStore from "../store/recipeStore";
+import useRecipeStore from "./recipeStore";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
