@@ -4,6 +4,7 @@ import Profile from './components/Profile';
 import { useState } from 'react'
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import BlogPost from './components/BlogPost';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,6 +24,7 @@ function App() {
             </PrivateRoute>}
         >
         </Route>
+        <Route path='/blog/:id' element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   )

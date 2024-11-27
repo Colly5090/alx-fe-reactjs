@@ -18,6 +18,9 @@ function Profile() {
                 <li>
                     <Link to={`/profile/${userId}/ProfileSettings`}>Profile Settings</Link>
                 </li>
+                <li>
+                    <Link to={`/blog/${userId}`} >View Blog Posts</Link>
+                </li>
             </ul>
         </nav>
         <div>
