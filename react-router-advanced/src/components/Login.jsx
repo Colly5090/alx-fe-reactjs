@@ -9,7 +9,7 @@ function Login({ setIsAuthenticated }) {
     }
 
     const handleLogin = () => {
-        setIsAuthenticated(true);
+        localStorage.setItem('user', JSON.stringify({ isAuthenticated: true }));
         const userId = generateId();
         navigate(`/profile/${userId}`);
 

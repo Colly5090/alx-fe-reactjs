@@ -1,8 +1,10 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import useAuth from './hooks/useAuth';
 
-function PrivateRoute({ isAuthenticated, children }) {
+function PrivateRoute({ children }) {
+    const isAuthenticated = useAuth();
     const [showMessage, setShowMessage] = useState(false);
     const [redirect, setRedirect] = useState(false);
 
