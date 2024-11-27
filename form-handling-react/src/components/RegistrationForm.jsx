@@ -1,63 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
-
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value })
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.username || !formData.email || !formData.password) {
-            setError("All fields are required!")
+        if (!username || !email || !password) {
+            setError('All fields are required!');
         } else {
-            setError('')
-            console.log('Form Submitted', formData)
-            setFormData({
-                username: '',
-                email: '',
-                password: '',
-            });
+            setError('');
+            console.log('Form Submitted:', { username, email, password });
+            setUsername('');
+            setEmail('');
+            setPassword('');
         }
-    }
+    };
+
     return (
         <div>
             <h2>Register</h2>
-            {error && <p>{error}</p>}
+            {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <input 
-                type="text"
-                value={formData.username}
-                placeholder='Username' 
-                name='username'
-                onChange={handleChange}/>
+                <label htmlFor="username">Username</label>
+                <input
+                    id="username"
+                    type="text"
+                    value={username}
+                    placeholder="Username"
+                    name="username"
+                    onChange={(e) => setUsername(e.target.value)}
+                />
 
-                <input 
-                type="email" 
-                value={formData.email}
-                name='email'
-                placeholder='Email Address'
-                onChange={handleChange}/>
+                <label htmlFor="email">Email Address</label>
+                <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    placeholder="Email Address"
+                    name="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-                <input 
-                type="password"
-                value={formData.password} 
-                name='password'
-                placeholder='Password'
-                onChange={handleChange}/>
+                <label htmlFor="password">Password</label>
+                <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    placeholder="Password"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-                <button type="submit">Submit</button>
+                <button
+                    type="submit"
+                    disabled={!username || !email || !password}
+                >
+                    Submit
+                </button>
             </form>
         </div>
     );
-}
+};
 
 export default RegistrationForm;
