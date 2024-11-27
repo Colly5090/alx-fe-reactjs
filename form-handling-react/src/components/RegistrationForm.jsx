@@ -9,17 +9,22 @@ const RegistrationForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const messages = [];
-        if (!username) messages.push('Username is required!');
-        if (!email) messages.push('Email is required!');
-        if (!password) messages.push('Password is required!');
-
-        if (messages.length > 0) {
-            setError(messages.join(' '));
+        if (!username) {
+            setError('Username is required!');
             return;
         }
 
-        // Form submission logic
+        if (!email) {
+            setError('Email is required!');
+            return;
+        }
+
+        if (!password) {
+            setError('Password is required!');
+            return;
+        }
+
+        // Clear error and submit form
         setError('');
         console.log('Form Submitted:', { username, email, password });
         setUsername('');
@@ -30,7 +35,7 @@ const RegistrationForm = () => {
     return (
         <div>
             <h2>Register</h2>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
