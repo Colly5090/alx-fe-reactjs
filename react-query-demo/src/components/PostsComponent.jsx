@@ -12,19 +12,19 @@ const fetchData = async () => {
 //refetch Allows us to manually trigger a refetch with a button or a trigger
 
     function PostsComponent() {
-    const { data, error, isLoading, refetch } = useQuery('mycache', fetchData, {staleTime: Infinity,});
+    const { fetchPosts, isError, isLoading, refetch } = useQuery('mycache', fetchData, {staleTime: Infinity,});
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
-    if (error) {
+    if (isError) {
         return <div>Error loading data</div>
     }
   return (
     <div>
         <button type='button' onClick={() => refetch()} disabled={isLoading}>Refresh Data</button>
         {isLoading && <div>Refreshing...</div>}
-        {data.map(item => (
+        {fetchPosts.map(item => (
             <div key={item.id}>
                 <h2>{item.title}</h2>
                 <p>{item.body}</p>
@@ -34,4 +34,4 @@ const fetchData = async () => {
   )
 }
 
-export default PostsComponent
+export default PostsComponent;
