@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Profile from './components/Profile';
 import { useState } from 'react'
 import Login from './components/Login';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/ProtectedRoute';
 import BlogPost from './components/BlogPost';
 
 function App() {
