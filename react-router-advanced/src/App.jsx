@@ -1,8 +1,6 @@
 import './App.css'
 import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Profile from './components/Profile';
-import ProfileDetails from './components/ProfileDetails';
-import ProfileSettings from './components/ProfileSettings';
 import { useState } from 'react'
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
@@ -24,8 +22,6 @@ function App() {
               <Profile setIsAuthenticated={setIsAuthenticated} />
             </PrivateRoute>}
         >
-          <Route path='profiledetails' element={<ProfileDetails />} />
-          <Route path='profilesettings' element={<ProfileSettings />} />
         </Route>
       </Routes>
     </BrowserRouter>
