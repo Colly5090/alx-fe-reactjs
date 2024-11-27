@@ -8,22 +8,23 @@ const RegistrationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!username){
-            setError("Username is required!")
+
+        const messages = [];
+        if (!username) messages.push('Username is required!');
+        if (!email) messages.push('Email is required!');
+        if (!password) messages.push('Password is required!');
+
+        if (messages.length > 0) {
+            setError(messages.join(' '));
+            return;
         }
-        else if(!email){
-            setError("Email is required!")
-        }
-        else if(!password){
-            setError("Password is required!")
-        }
-        else {
-            setError('');
-            console.log('Form Submitted:', { username, email, password });
-            setUsername('');
-            setEmail('');
-            setPassword('');
-        }
+
+        // Form submission logic
+        setError('');
+        console.log('Form Submitted:', { username, email, password });
+        setUsername('');
+        setEmail('');
+        setPassword('');
     };
 
     return (
@@ -61,12 +62,7 @@ const RegistrationForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <button
-                    type="submit"
-                    disabled={!username || !email || !password}
-                >
-                    Submit
-                </button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
