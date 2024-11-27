@@ -12,7 +12,13 @@ const fetchData = async () => {
 //refetch Allows us to manually trigger a refetch with a button or a trigger
 
     function PostsComponent() {
-    const { fetchPosts, isError, isLoading, refetch } = useQuery('mycache', fetchData, {staleTime: Infinity,});
+    const { fetchPosts, isError, isLoading, refetch } = useQuery('mycache', fetchData, {
+        staleTime: 60000,
+        cacheTime: 300000,
+        refetchOnWindowFocus: true,
+        keepPreviousData: true,
+
+    });
 
     if (isLoading) {
         return <div>Loading...</div>;
