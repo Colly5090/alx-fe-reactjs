@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
@@ -7,11 +10,13 @@ test('Test to delete item from TodoList', () => {
     render(<TodoList />)
 
     const todoItem = screen.getByText('Learn React');
-    const deleteButton = screen.getByText('Delete');
+    const deleteButton = screen.getAllByText('Delete');
 
     expect(todoItem).toBeInTheDocument();
 
-    fireEvent.click(deleteButton);
+    deleteButton.forEach(button => {
+        fireEvent.click(button);
+    })
 
     expect(todoItem).not.toBeInTheDocument();
  })
