@@ -25,7 +25,7 @@ function HomePage() {
   return (
     <div className="container mx-auto px-4 py-8">
         <AddRecipeForm />
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-6 text-mycustomcolor">
+      <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl font-bold text-center mb-6 text-mycustomcolor">
         My Recipes
       </h1>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
