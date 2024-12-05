@@ -21,18 +21,21 @@ function AddRecipeForm() {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Validation logic
+    const validate = () => {
         const newErrors = [];
         if (!formData.title.trim()) newErrors.push('Title is required');
         if (!formData.summary.trim()) newErrors.push('Summary is required');
         if (!formData.ingredients.trim()) newErrors.push('Ingredients are required');
-        if (!formData.steps.trim()) newErrors.push('steps are required');
+        if (!formData.steps.trim()) newErrors.push('Instructions are required');
+        return newErrors;
+    };
 
-        if (newErrors.length > 0) {
-            setErrors(newErrors);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const validationErrors = validate();
+        if (validationErrors.length > 0) {
+            setErrors(validationErrors);
         } else {
             // Submit logic
             console.log('Form Submitted:', formData);
