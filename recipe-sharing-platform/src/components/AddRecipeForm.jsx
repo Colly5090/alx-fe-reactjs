@@ -10,11 +10,14 @@ function AddRecipeForm() {
 
     const [errors, setErrors] = useState([]);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
         setFormData({
             ...formData,
-            [name]: value
+            [name]: value,
         });
     };
 
@@ -26,7 +29,7 @@ function AddRecipeForm() {
         if (!formData.title.trim()) newErrors.push('Title is required');
         if (!formData.summary.trim()) newErrors.push('Summary is required');
         if (!formData.ingredients.trim()) newErrors.push('Ingredients are required');
-        if (!formData.instructions.trim()) newErrors.push('Instructions are required');
+        if (!formData.steps.trim()) newErrors.push('steps are required');
 
         if (newErrors.length > 0) {
             setErrors(newErrors);
@@ -82,8 +85,8 @@ function AddRecipeForm() {
                 {/* Instructions Field */}
                 <div>
                     <textarea
-                        id="instructions"
-                        name="instructions"
+                        id="steps"
+                        name="steps"
                         placeholder="Enter Step-by-step Instructions"
                         rows="6"
                         value={formData.instructions}
