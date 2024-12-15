@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const GITHUB_API_URL = "https://api.github.com/users";
 const GITHUB_SEARCH_API_URL = "https://api.github.com/search/users"
-const GITHUB_API_KEY = "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"
+const GITHUB_API_KEY = process.env.REACT_APP_GITHUB_API_KEY
 
 
 export const fetchUserData = async (username, location = '', minRepos = '') => {
